@@ -16,6 +16,7 @@ const modalStatusItem = document.querySelector('.modal__status-item');
 const modalDescriptionItem = document.querySelector('.modal__description-item');
 const modalCostItem = document.querySelector('.modal__cost-item');
 const searchInput = document.querySelector('.search__input');
+const menuContainer = document.querySelector('.menu__container');
 
 const textFileBtn = modalFileBtn.textContent;
 const srcModalImage = modalImageAdd.src;
@@ -151,6 +152,16 @@ catalog.addEventListener('click', event => {
 });
 
 modalItem.addEventListener('click', closeModal);
+
+menuContainer.addEventListener('click', event => {
+    const target = event.target;
+
+    if (target.tagName === 'A') {
+        const selectCategory = dataBase.filter(item => item.category === target.dataset.category);
+
+        renderCard(selectCategory);
+    }
+});
 
 //function call
 renderCard();
