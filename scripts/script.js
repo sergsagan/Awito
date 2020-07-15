@@ -15,6 +15,7 @@ const modalHeaderItem = document.querySelector('.modal__header-item');
 const modalStatusItem = document.querySelector('.modal__status-item');
 const modalDescriptionItem = document.querySelector('.modal__description-item');
 const modalCostItem = document.querySelector('.modal__cost-item');
+const searchInput = document.querySelector('.search__input');
 
 const textFileBtn = modalFileBtn.textContent;
 const srcModalImage = modalImageAdd.src;
@@ -26,6 +27,7 @@ const elementsModalSubmit = [...modalSubmit.elements]
     .filter(elem => elem.tagName !== 'BUTTON' && elem.type !== 'submit');
 
 const infoPhoto = {};
+let counter = dataBase.length;
 
 //function
 const saveDB = () => localStorage.setItem('awito', JSON.stringify(dataBase));
@@ -52,12 +54,12 @@ const closeModal = event => {
     }
 };
 
-const renderCard = () => {
+const renderCard = (DB = dataBase) => {
     catalog.textContent = '';
 
-    dataBase.forEach((item, i) => {
+    DB.forEach((item) => {
         catalog.insertAdjacentHTML('beforeend',
-   `<li class="card" data-id-item="${i}">
+   `<li class="card" data-id="${item.id}">
             <img class="card__image" src="data:image/jpg;base64,${item.image}" alt="test">
             <div class="card__description">
                 <h3 class="card__header">${item.nameItem}</h3>
@@ -69,6 +71,17 @@ const renderCard = () => {
 };
 
 //event handler
+searchInput.addEventListener('input', () => {
+    const valueSearch = searchInput.value.trim().toLowerCase();
+
+    if (valueSearch.length > 2) {
+        const result = dataBase.filter(item =>
+            item.nameItem.toLowerCase().includes(valueSearch) ||
+            item.descriptionItem.toLowerCase().includes(valueSearch));
+        renderCard(result);
+    }
+});
+
 modalFileInput.addEventListener('change', event => {
     const target = event.target;
     const reader = new FileReader();
@@ -101,8 +114,10 @@ modalSubmit.addEventListener('submit', event => {
     for (const elem of elementsModalSubmit) {
         itemObject[elem.name] = elem.value;
     }
+    itemObject.id = counter++;
     itemObject.image = infoPhoto.base64;
     dataBase.push(itemObject);
+
     closeModal({target: modalAdd});
     saveDB();
     renderCard();
@@ -122,7 +137,7 @@ catalog.addEventListener('click', event => {
     const card = target.closest('.card');
 
     if (card) {
-        const item = dataBase[card.dataset.idItem];
+        const item = dataBase.find(obj => obj.id === +card.dataset.id);
 
         modalImageItem.src = `data:image/jpg;base64,${item.image}`;
         modalHeaderItem.textContent = item.nameItem;
