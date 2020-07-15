@@ -1,0 +1,304 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+
+  font-size: 16px;
+  color: black;
+}
+
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, p {
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.container {
+  max-width: 1060px; /*под проект*/
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.btn {
+  background-color: #0af;
+  border-color: transparent;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  min-height: 30px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-bottom: 15px;
+  display: block;
+  &:hover {
+    background-color: #009cf0;
+  }
+}
+
+.header {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 200px;
+  margin-right: 30px;
+  margin-bottom: 15px;
+}
+
+.menu {
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  &__link {
+    margin-right: 15px;
+    color: #009cf0;
+
+    &:hover {
+      color: #ff6163;
+    }
+  }
+}
+
+.search {
+  &__form {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__label {
+    flex-grow: 1;
+    height: 30px;
+  }
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    line-height: 30px;
+    border: 2px solid #ccc;
+    border-right-width: 1px;
+  }
+
+  &__btn {
+    border: 2px solid #ccc;
+    border-left-width: 1px;
+    background-color: transparent;
+  }
+}
+
+
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 220px);
+  grid-gap: 1rem;
+  margin-top: 30px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.card {
+  cursor: pointer;
+  box-shadow: 1px 2px 5px 0 rgba(174, 174, 174, 0.75);
+  display: flex;
+  flex-direction: column;
+  &__image {
+    border: 1px solid #ccc;
+    flex-grow: 1;
+    object-fit: cover;
+    max-height: 260px;
+  }
+
+  &__description {
+    padding: 15px;
+  }
+
+  &__header {
+    margin-top: 15px;
+    color: #009cf0;
+    font-weight: bold;
+  }
+
+  &__price {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(#00aaff, .4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__block {
+    background-color: #fff;
+    padding: 30px;
+    max-width: 600px;
+    margin: 30px;
+    position: relative;
+  }
+  &__image {
+    max-width: 200px;
+    border: 1px solid #ccc;
+    margin-right: 15px;
+  }
+  &__header {
+    margin-bottom: 15px;
+  }
+  &__submit {
+    label {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    input {
+      margin-left: 15px;
+    }
+  }
+
+  &__btn-submit {
+    display: block;
+    margin-top: 15px;
+    margin-left: auto;
+  }
+
+  &__btn-submit:disabled,
+  &__btn-submit[disabled]{
+    background-color: #cccccc;
+    color: #666666;
+  }
+
+  &__btn-block {
+    display: flex;
+    align-items: center;
+  }
+
+  &__btn-warning {
+    color: #BF3F4A;
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  &__description p {
+    margin-top: 10px;
+  }
+
+  &__file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  &__file-btn {
+    line-height: 2;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  &__file-label {
+    display: block!important;
+
+    &:hover {
+      cursor: pointer;
+
+      span {
+        background-color: #BF3F4A;
+      }
+    }
+    span {
+
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 24px;
+    line-height: 24px;
+    &:hover {
+      color: #009cf0;
+    }
+  }
+}
+
+.hide {
+  display: none;
+}
+
+
+
+@media (max-width: 515px) {
+  .catalog {
+    justify-content: center;
+  }
+}

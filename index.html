@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="msapplication-TileColor" content="#00aba9">
+	<meta name="theme-color" content="#ffffff">
+	<link rel="stylesheet" href="./style/style.css">
+	<title>Avito</title>
+</head>
+<body>
+	<header>
+		<div class="container">
+			<div class="header">
+				<div class="logo">
+					<a href="index.html">
+						<img src="img/logo.svg" alt="">
+					</a>
+				</div>
+				<nav class="menu">
+					<ul class="menu__container">
+						<li class="menu__link"><a href="#" data-category="cloth">Одежда</a></li>
+						<li class="menu__link"><a href="#" data-category="foot">Обувь</a></li>
+						<li class="menu__link"><a href="#" data-category="toy">Игрушки</a></li>
+						<li class="menu__link"><a href="#" data-category="furniture">Мебель</a></li>
+						<li class="menu__link"><a href="#" data-category="tech">Техника</a></li>
+					</ul>
+				</nav>
+				<button class="btn btn-add__ad">
+					Подать объявление
+				</button>
+			</div>
+			<div class="search">
+				<form class="search__form">
+					<label class="search__label">
+						<input class="search__input" type="search">
+					</label>
+				</form>
+			</div>
+
+		</div>
+	</header>
+	<main>
+		<div class="container">
+			<ul class="catalog"></ul>
+		</div>
+	</main>
+	<div class="modal modal__add hide">
+		<div class="modal__block">
+			<h2 class="modal__header">Подать Объявление</h2>
+			<div class="modal__content">
+				<div><img class="modal__image modal__image-add" src="img/temp.jpg" alt="test"></div>
+				<form class="modal__submit">
+					<label class="modal__file-label">
+						<span class="btn modal__file-btn">Добавить фото</span>
+						<input class="modal__file-input" type="file" name="image" accept="image/*" required>
+					</label>
+
+					<label>
+						<span>Категория:</span>
+						<select name="category">
+							<option value="toy">Игрушки</option>
+							<option value="furniture">Мебель</option>
+							<option value="foot">Обувь</option>
+							<option value="cloth">Одежда</option>
+							<option value="tech">Техника</option>
+						</select>
+					</label>
+
+					<label>
+						<span>Название:</span>
+						<input name="nameItem" type="text" required>
+					</label>
+
+					<label>
+						<span>Состояние:</span>
+						<select name="status">
+							<option value="old">Б/у</option>
+							<option value="new">Новый</option>
+						</select>
+					</label>
+
+
+					<label>
+						<span>Описание:</span>
+						<textarea name="descriptionItem" maxlength="3000" required></textarea>
+					</label>
+
+					<label>
+						<span>Цена:</span>
+						<input name="costItem" type="number" required>
+					</label>
+					<div class="modal__btn-block">
+						<span class="modal__btn-warning">Заполните все поля</span>
+						<button class="btn modal__btn-submit">Отправить</button>
+					</div>
+				</form>
+			</div>
+			<button class="modal__close">&#10008;</button>
+		</div>
+	</div>
+	<div class="modal modal__item hide">
+		<div class="modal__block">
+			<h2 class="modal__header">Купить</h2>
+			<div class="modal__content">
+				<div><img class="modal__image modal__image-item" src="img/temp.jpg" alt="test"></div>
+				<div class="modal__description">
+					<h3 class="modal__header-item">Тестовый Телефон</h3>
+					<p>Состояние: <span class="modal__status-item">отличное</span></p>
+					<p>Описание:
+						<span class="modal__description-item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, aut deleniti dolores ex explicabo fugit hic?</span>
+					</p>
+					<p>Цена: <span class="modal__cost-item">4000 ₽</span></p>
+					<button class="btn">Купить</button>
+				</div>
+			</div>
+			<button class="modal__close">&#10008;</button>
+		</div>
+	</div>
+</body>
+<script src="scripts/script.js" defer></script>
+</html>
