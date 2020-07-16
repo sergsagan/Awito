@@ -59,9 +59,9 @@ const renderCard = (DB = dataBase) => {
     catalog.textContent = '';
 
     DB.forEach((item) => {
-        catalog.insertAdjacentHTML('beforeend',
+        catalog.insertAdjacentHTML('afterbegin',
    `<li class="card" data-id="${item.id}">
-            <img class="card__image" src="data:image/jpg;base64,${item.image}" alt="test">
+            <img class="card__image" src="data:image/jpg;base64,${item.image}" alt="${item.nameItem}">
             <div class="card__description">
                 <h3 class="card__header">${item.nameItem}</h3>
                 <div class="card__price">${item.costItem} ₽</div>
